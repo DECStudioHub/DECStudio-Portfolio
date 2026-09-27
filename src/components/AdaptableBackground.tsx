@@ -1,4 +1,5 @@
 import React from 'react';
+import decBackground from '../assets/images/dec.jpg';
 
 export const AdaptableBackground: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const AdaptableBackground: React.FC = () => {
       <div
         className="absolute inset-0 bg-cover bg-no-repeat will-change-transform opacity-65"
         style={{
-          backgroundImage: `url('./dec.jpg')`,
+          backgroundImage: `url(${decBackground})`,
           backgroundPosition: '56% 18%',
         }}
       />

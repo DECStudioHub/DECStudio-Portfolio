@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePortfolio } from '../context/PortfolioContext';
+import profileAvatar from '../assets/images/PP.jpg';
 
 export const ProfileImage: React.FC = () => {
   const { data } = usePortfolio();
@@ -35,15 +36,9 @@ export const ProfileImage: React.FC = () => {
         {/* Inner Solid Border & Fixed Profile Photo Frame */}
         <div className="relative w-[84%] h-[84%] rounded-full overflow-hidden border-2 border-[#412D15] bg-[#1F150C] shadow-[0_10px_35px_rgba(0,0,0,0.8)] transition-all duration-300 group-hover:border-[#E1DCC9]/80 group-hover:shadow-[0_10px_45px_rgba(225,220,201,0.15)]">
           <img
-            src="./PP.jpg"
+            src={profileAvatar}
             alt={`${data.profile.name} - DECStudio`}
             className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              if (target.src !== window.location.origin + '/PP.jpg') {
-                target.src = '/PP.jpg';
-              }
-            }}
           />
 
           {/* Subtle vignette rim inside the frame */}
