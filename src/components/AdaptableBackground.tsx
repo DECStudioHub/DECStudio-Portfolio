@@ -1,0 +1,32 @@
+import React from 'react';
+
+export const AdaptableBackground: React.FC = () => {
+  return (
+    <div
+      className="fixed inset-0 pointer-events-none z-0 overflow-hidden"
+      aria-hidden="true"
+    >
+      {/* Base Dark Canvas */}
+      <div className="absolute inset-0 bg-[#000000]" />
+
+      {/* The dec.jpg Background Photo Layer (Fixed 65% Opacity, Centered Directly on Face at 56% 18%) */}
+      <div
+        className="absolute inset-0 bg-cover bg-no-repeat will-change-transform opacity-65"
+        style={{
+          backgroundImage: `url('./dec.jpg')`,
+          backgroundPosition: '56% 18%',
+        }}
+      />
+
+      {/* Cinematic Scrim & Dark Gradient: Guarantees text and layout remain 100% crisp and readable */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/65 to-black/90 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-radial-vignette opacity-70" />
+
+      {/* Subtle DECStudio brand dark brown undertone */}
+      <div className="absolute inset-0 bg-[#1F150C]/25 mix-blend-color" />
+
+      {/* Fine technical grid */}
+      <div className="absolute inset-0 bg-tech-grid opacity-15" />
+    </div>
+  );
+};
