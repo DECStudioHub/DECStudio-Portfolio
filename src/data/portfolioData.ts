@@ -118,7 +118,7 @@ export const initialPortfolioData: PortfolioConfig = {
       'Android Developer',
       'IT Tech Support',
       'System Developer',
-      'Technology Creator',
+      'Content Creator',
     ],
     supportingText:
       'Building practical digital solutions, reliable systems, and creative technology experiences.',
@@ -195,7 +195,7 @@ export const initialPortfolioData: PortfolioConfig = {
           'Streamlining repetitive manual operations through custom batch scripts, API integrations, database workflows, and fault-tolerant system design.',
       },
       {
-        title: 'Technology Creator',
+        title: 'Content Creator',
         subtitle: 'Digital Content & Studio Media',
         description:
           'Producing engaging technology content, visual media, technical tutorials, and creative brand experiences across YouTube, TikTok, and digital channels.',

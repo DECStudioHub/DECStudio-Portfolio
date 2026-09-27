@@ -40,9 +40,9 @@ export const Hero: React.FC = () => {
       <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#412D15]/20 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 translate-y-1/2 w-80 h-80 bg-[#1F150C]/40 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <div className="relative z-10 max-w-7xl w-full mx-auto flex flex-col lg:grid lg:grid-cols-12 gap-10 sm:gap-12 lg:gap-8 items-center">
         {/* LEFT COLUMN: Introduction & Copy */}
-        <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6">
+        <div className="lg:col-span-7 flex flex-col items-start text-left space-y-6 w-full">
           {/* Status & Identity Kicker */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#412D15] bg-[#1F150C]/70 backdrop-blur-sm">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
