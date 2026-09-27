@@ -10,6 +10,77 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
   // Render a clean, stylized technical preview graphic for each project
   const renderPreviewGraphic = (theme: string) => {
     switch (theme) {
+      case 'dec-system':
+        return (
+          <div className="w-full h-full bg-[#120D08] relative overflow-hidden flex flex-col justify-between p-3.5 font-mono text-[10px] text-[#E1DCC9]/80 select-none">
+            {/* Top Bar */}
+            <div className="flex items-center justify-between border-b border-[#412D15]/60 pb-1.5">
+              <span className="flex items-center gap-1.5 text-[#E1DCC9] font-semibold">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                PCOUNT_W2W_ENGINE.xlsx
+              </span>
+              <span className="text-[9px] text-[#E1DCC9]/60 bg-black/50 px-1.5 py-0.5 rounded border border-[#412D15]/50">
+                OFFLINE READY
+              </span>
+            </div>
+
+            {/* Middle visual: Simulated Retail Count Tag & Barcode */}
+            <div className="grid grid-cols-12 gap-2.5 py-1 items-center">
+              {/* White Count Tag Preview */}
+              <div className="col-span-7 bg-[#E1DCC9] text-[#120D08] p-2 rounded border border-[#412D15] shadow-inner space-y-1">
+                <div className="flex justify-between items-center text-[8px] font-bold tracking-wider border-b border-[#120D08]/20 pb-0.5">
+                  <span>COUNT TAG #0492</span>
+                  <span className="bg-[#120D08] text-[#E1DCC9] px-1 rounded text-[7px]">9/PAGE</span>
+                </div>
+                <div className="text-[10px] font-black tracking-tight leading-none truncate">
+                  LOC: AISLE-04-SHELF-B
+                </div>
+                {/* Simulated Barcode Lines */}
+                <div className="h-4 flex items-center justify-between gap-[2px] bg-white px-1 py-0.5 rounded">
+                  <div className="w-[2px] h-full bg-black" />
+                  <div className="w-[1px] h-full bg-black" />
+                  <div className="w-[3px] h-full bg-black" />
+                  <div className="w-[1px] h-full bg-black" />
+                  <div className="w-[2px] h-full bg-black" />
+                  <div className="w-[4px] h-full bg-black" />
+                  <div className="w-[1px] h-full bg-black" />
+                  <div className="w-[3px] h-full bg-black" />
+                  <div className="w-[2px] h-full bg-black" />
+                  <div className="w-[1px] h-full bg-black" />
+                  <div className="w-[3px] h-full bg-black" />
+                  <div className="w-[2px] h-full bg-black" />
+                </div>
+                <div className="text-[7px] text-center font-mono text-[#120D08]/80 tracking-widest leading-none">
+                  *4928104820*
+                </div>
+              </div>
+
+              {/* Yellow PP Tag & Specs */}
+              <div className="col-span-5 space-y-1.5">
+                <div className="bg-[#EAB308] text-[#120D08] px-2 py-1 rounded text-[8px] font-bold leading-tight shadow-sm border border-[#CA8A04]">
+                  <div className="text-[7px] uppercase tracking-wide opacity-80">PP TAG ENGINE</div>
+                  <div className="truncate font-black">SHELF / PROMO</div>
+                </div>
+                <div className="text-[9px] text-[#E1DCC9]/70 space-y-0.5">
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">PARSER:</span>
+                    <span className="text-emerald-400 font-medium">SheetJS</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">EXPORT:</span>
+                    <span className="text-[#E1DCC9]">jsPDF / Print</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Telemetry */}
+            <div className="pt-1.5 border-t border-[#412D15]/50 flex items-center justify-between text-[9px] text-[#E1DCC9]/60">
+              <span>LOCATOR GROUPING: A–Z</span>
+              <span className="text-emerald-400 font-medium">ACCURACY: ±0.1mm</span>
+            </div>
+          </div>
+        );
       case 'it-support':
         return (
           <div className="w-full h-full bg-[#150E07] relative overflow-hidden flex flex-col justify-between p-4 font-mono text-[10px] text-[#E1DCC9]/70 select-none">
@@ -207,31 +278,46 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
       </div>
 
       {/* Action Footer */}
-      <div className="p-6 pt-0 mt-2 flex items-center justify-between border-t border-[#412D15]/40 pt-4">
+      <div className="p-6 pt-0 mt-2 flex flex-wrap items-center justify-between border-t border-[#412D15]/40 pt-4 gap-2">
         <button
           onClick={() => onViewDetails(project)}
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#E1DCC9] hover:underline decoration-1 underline-offset-4"
         >
-          <span>View Project</span>
+          <span>View Details</span>
           <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
           </svg>
         </button>
 
-        {project.githubUrl && (
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`View ${project.title} on GitHub`}
-            className="flex items-center gap-1 text-xs font-mono text-[#E1DCC9]/60 hover:text-[#E1DCC9] transition-colors"
-          >
-            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-              <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
-            </svg>
-            <span>GitHub</span>
-          </a>
-        )}
+        <div className="flex items-center gap-2.5">
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open live app for ${project.title}`}
+              className="inline-flex items-center gap-1 px-3 py-1 rounded bg-[#412D15] hover:bg-[#573d1e] text-xs font-medium text-[#E1DCC9] border border-[#E1DCC9]/30 transition-all shadow-sm"
+            >
+              <span>Live System</span>
+              <span className="text-[10px]">↗</span>
+            </a>
+          )}
+
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`View ${project.title} on GitHub`}
+              className="flex items-center gap-1 text-xs font-mono text-[#E1DCC9]/70 hover:text-[#E1DCC9] transition-colors"
+            >
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+              </svg>
+              <span>GitHub</span>
+            </a>
+          )}
+        </div>
       </div>
     </article>
   );

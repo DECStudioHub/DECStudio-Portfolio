@@ -15,6 +15,7 @@ export interface ProjectItem {
   id: string;
   title: string;
   category: 'Web Development' | 'Android' | 'Software' | 'IT Tools' | 'Automation' | 'Creative Projects';
+  tags?: string[];
   shortDescription: string;
   fullDescription: string;
   features: string[];
@@ -43,9 +44,17 @@ export interface ExperienceItem {
   location: string;
   period: string;
   type: string;
+  overview?: string;
   responsibilities: string[];
-  achievements: string[];
+  achievements?: string[];
   technologies: string[];
+  coreAreas?: string[];
+}
+
+export interface CareerProgressionItem {
+  role: string;
+  company: string;
+  period: string;
 }
 
 export interface TestimonialItem {
@@ -96,6 +105,8 @@ export interface PortfolioConfig {
   skills: SkillCategory[];
   projects: ProjectItem[];
   experience: ExperienceItem[];
+  careerProgression?: CareerProgressionItem[];
+  professionalFocus?: string[];
   testimonials: TestimonialItem[];
 }
 
@@ -252,188 +263,345 @@ export const initialPortfolioData: PortfolioConfig = {
   ],
   projects: [
     {
-      id: 'proj-it-asset-hub',
-      title: 'Enterprise IT Asset & Support Portal',
-      category: 'IT Tools',
-      shortDescription:
-        'Centralized dashboard for tracking hardware warranties, network device health, incident ticketing, and automated maintenance schedules.',
-      fullDescription:
-        'A purpose-built IT operations portal designed to streamline hardware asset lifecycles, peripheral inventory, network device IP mapping, and rapid incident ticketing for technical support teams.',
-      features: [
-        'Hardware serial barcode scanner and status tracker',
-        'Automated scheduled printer & network health pinging',
-        'Ticket triage queue with priority-based categorization',
-        'Preventative maintenance logs and vendor warranty notifications',
-      ],
-      techStack: ['React', 'TypeScript', 'Node.js', 'Express', 'Tailwind CSS'],
-      status: 'Production',
-      githubUrl: 'https://github.com/DECStudioHub',
-      liveUrl: '#',
-      architectureNotes: 'Modular service layer with local cached state and responsive technician dashboard view.',
-      imageTheme: 'it-support',
-    },
-    {
-      id: 'proj-android-pos-sync',
-      title: 'Mobile POS & Inventory Sync Engine',
-      category: 'Android',
-      shortDescription:
-        'Android-native terminal app for retail order entry, offline-capable transaction queueing, and thermal printer integration.',
-      fullDescription:
-        'Engineered for mobile sales counters and field point-of-sale environments. Features offline SQLite transactions with automatic background syncing when network connectivity restores.',
-      features: [
-        'Bluetooth and USB thermal receipt printer drivers',
-        'Offline-first transaction spooling and conflict-free reconciliation',
-        'Barcode scanner camera overlay with low-latency decoding',
-        'Daily cash drawer balancing and end-of-day summary exports',
-      ],
-      techStack: ['Android SDK', 'Java / Kotlin', 'SQLite', 'Bluetooth API'],
-      status: 'Active System',
-      githubUrl: 'https://github.com/DECStudioHub',
-      liveUrl: '#',
-      architectureNotes: 'Room persistence database with background WorkManager synchronization service.',
-      imageTheme: 'android-pos',
-    },
-    {
-      id: 'proj-auto-backup-monitor',
-      title: 'Automated System Monitor & Backup Daemon',
-      category: 'Automation',
-      shortDescription:
-        'Lightweight background service monitoring disk health, automated snapshot archiving, and alert notifications for business servers.',
-      fullDescription:
-        'Automates scheduled local and cloud data backups with cryptographic checksum integrity verification, alerting sysadmins via webhook notifications upon anomalies.',
-      features: [
-        'Automated incremental backup execution and archive rotation',
-        'SHA-256 validation to prevent corrupted recovery sets',
-        'Custom webhook notifications to messaging platforms',
-        'Disk utilization and memory ceiling telemetry reporting',
-      ],
-      techStack: ['Node.js', 'Bash Shell', 'Cron Engine', 'REST Webhooks'],
-      status: 'Production Ready',
-      githubUrl: 'https://github.com/DECStudioHub',
-      liveUrl: '#',
-      architectureNotes: 'Zero-overhead daemon running with configurable thresholds and self-healing watchdog.',
-      imageTheme: 'automation',
-    },
-    {
-      id: 'proj-web-client-platform',
-      title: 'Dynamic Web Services & Client Portal',
+      id: 'proj-dec-system',
+      title: 'DEC — Digital Efficiency & Continuity System',
       category: 'Web Development',
+      tags: ['Web Development', 'IT Tools', 'Software', 'Automation'],
       shortDescription:
-        'Modern client-facing web application with authenticated service booking, document exchange, and interactive project milestone tracking.',
+        'Enterprise Retail Inventory Count Tag, Shelf-Edge Labeling & Barcode Engine. A browser-based, offline-capable retail system designed to improve inventory counting, barcode generation, and precision printing.',
       fullDescription:
-        'A comprehensive web platform that bridges technical support delivery and client transparent communications, featuring real-time timeline tracking and automated status updates.',
+        'A browser-based, offline-capable retail system designed to improve inventory counting, barcode generation, Count Tag, Count Sheet, ShelfTag, and PP Tag printing. It addresses paper waste, manual locator entry, inconsistent print layouts, barcode scanning issues, and dependency on cloud-based tools.',
       features: [
-        'Clean responsive dashboard optimized across desktop and mobile',
-        'Service inquiry flow with customized dynamic requirement builder',
-        'Document and specification download section',
-        'High-contrast accessible day/night visual presentation',
+        'Excel Import & Data Validation',
+        'Intelligent 9 Tags/Page paper optimization',
+        'Locator & SKU Barcode Generation',
+        'Automatic Locator Grouping & A–Z Sorting',
+        'Count Tag & Count Sheet Generation',
+        'White ShelfTag & Yellow PP Tag Generator',
+        'Millimeter-accurate Layout & Print Preview',
+        'PDF Export & Browser Printing',
+        'Local Backup & Restore',
       ],
-      techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
-      status: 'Deployed',
-      githubUrl: 'https://github.com/DECStudioHub',
-      liveUrl: '#',
-      architectureNotes: 'Clean modular component structure with instant client-side rendering.',
-      imageTheme: 'web-platform',
-    },
-    {
-      id: 'proj-content-studio-pipeline',
-      title: 'Content Studio Media & Video Pipeline',
-      category: 'Creative Projects',
-      shortDescription:
-        'Automated script generator, asset aggregator, and batch rendering workflow tool for tech tutorial publishing across social channels.',
-      fullDescription:
-        'Assists digital creators in structuring technical video tutorials, tracking channel analytics, generating descriptive show-notes, and streamlining multi-platform media asset exports.',
-      features: [
-        'Structured markdown script editor with cue markers',
-        'Batch metadata generator for YouTube and TikTok uploads',
-        'Asset thumbnail previewer with platform ratio overlays',
-        'Publishing schedule calendar with automated reminder flags',
+      techStack: [
+        'React 18',
+        'TypeScript',
+        'Vite',
+        'Tailwind CSS',
+        'Lucide React',
+        'SheetJS (xlsx)',
+        'JsBarcode',
+        'jsPDF',
+        'LocalStorage + JSON',
+        'Offline-Capable / Client-Side',
       ],
-      techStack: ['TypeScript', 'React', 'Media APIs', 'Markdown Parser'],
-      status: 'Open Source',
-      githubUrl: 'https://github.com/DECStudioHub',
-      liveUrl: '#',
-      architectureNotes: 'Client-side file handling with instant preview and local persistence.',
-      imageTheme: 'creative-studio',
-    },
-    {
-      id: 'proj-network-diag-toolkit',
-      title: 'Network Diagnostic & IP Subnet Utility',
-      category: 'Software',
-      shortDescription:
-        'Rapid network diagnostic software tool for field technicians to test subnet conflicts, ping latency, DNS health, and port openings.',
-      fullDescription:
-        'Built for fast on-site deployment when troubleshooting enterprise LAN connectivity, printer IP conflicts, and router configuration problems.',
-      features: [
-        'Subnet calculator with CIDR mask visualizer',
-        'Concurrent multi-host ping latency graph',
-        'Common service port scanner (HTTP, SSH, RDP, Printing)',
-        'Exportable diagnostic summary report for client signoff',
-      ],
-      techStack: ['JavaScript', 'HTML5', 'WebSockets', 'Network APIs'],
-      status: 'Completed',
-      githubUrl: 'https://github.com/DECStudioHub',
-      liveUrl: '#',
-      architectureNotes: 'Lightweight zero-dependency architecture for fast execution on any field device.',
-      imageTheme: 'network-tools',
+      status: 'Production',
+      githubUrl: 'https://decstudiohub.github.io/PRG-DEC/',
+      liveUrl: 'https://decstudiohub.github.io/PRG-DEC/',
+      architectureNotes:
+        'Excel Import → Data Validation → Data Processing → Module 1: PCOUNT W2W (Count Tag • Count Sheet • Locator Grouping • Barcode • 9-Tag Packing) | Module 2: ShelfTag / PP Tag (White Tag • Yellow Tag • Layout Editor • Print Preview) → Unified Rendering → Browser Print / PDF Export',
+      imageTheme: 'dec-system',
     },
   ],
   experience: [
     {
-      id: 'exp-lead-tech',
-      position: 'Lead Technical Consultant & System Developer',
-      company: 'DECStudio',
+      id: 'exp-prince-supervisor',
+      position: 'Client Support Supervisor',
+      company: 'Prince Retail Group of Companies',
       location: 'Philippines',
-      period: '2023 — Present',
-      type: 'Independent / Studio Practice',
+      period: 'March 2022 – Present',
+      type: 'Hybrid',
+      overview:
+        'Lead and oversee IT service operations supporting Prince Retail’s branch and distribution-center environments across Negros and Panay. Responsible for coordinating field IT support, maintaining reliable technology operations, and ensuring IT infrastructure supports continuous retail business operations.',
       responsibilities: [
-        'Architecting custom web applications, automation utilities, and technical software for client operations.',
-        'Providing Tier 1–3 technical support, network configuration, hardware diagnostics, and POS maintenance for small-to-medium businesses.',
-        'Directing digital content production, technical education, and media assets for DECStudio social channels.',
+        'Lead and coordinate Roving IT Operations across assigned branches and Distribution Centers.',
+        'Supervise Client Support personnel and coordinate onsite and remote technical support activities.',
+        'Oversee the installation, configuration, maintenance, and troubleshooting of IT hardware, software, network infrastructure, servers, POS systems, and business applications.',
+        'Provide technical leadership and onsite IT support during new store openings, renovations, relocations, and technology deployments.',
+        'Coordinate end-to-end IT requirements for store openings, including hardware deployment, network setup, system configuration, testing, validation, and operational handover.',
+        'Monitor IT incidents, service requests, preventive maintenance activities, and field support performance.',
+        'Support IT Service Management (ITSM) processes, including incident handling, service requests, task coordination, SLA monitoring, and root-cause analysis.',
+        'Develop and improve operational workflows using Microsoft 365, SharePoint, Power Apps, Power Automate, Power BI, and service-management platforms.',
+        'Develop dashboards, reports, checklists, and digital tools to improve IT visibility, service performance, asset monitoring, and operational efficiency.',
+        'Analyze IT service and operational data to identify recurring issues, performance gaps, and opportunities for process improvement.',
+        'Coordinate with internal departments, vendors, and business stakeholders to resolve technical issues and deliver IT requirements.',
+        'Implement standardized procedures and documentation to improve consistency across geographically distributed locations.',
+        'Participate in RCA, 5 Whys, corrective actions, preventive actions, and continuous improvement initiatives.',
+        'Ensure IT systems and infrastructure remain secure, reliable, available, and aligned with business requirements.',
       ],
-      achievements: [
-        'Engineered 10+ custom software and automation solutions reducing manual operational overhead by over 40%.',
-        'Resolved over 300+ hardware, network, and POS troubleshooting cases with high client satisfaction and zero downtime escalations.',
-        'Established DECStudio technical brand identity and published comprehensive tech tutorials reaching wide community audiences.',
+      technologies: [
+        'IT Operations',
+        'IT Service Management',
+        'Team Leadership',
+        'Roving IT Support',
+        'Network Infrastructure',
+        'Server Support',
+        'POS Systems',
+        'Store Opening Deployment',
+        'Incident Management',
+        'SLA Monitoring',
+        'Root Cause Analysis',
+        'Data Analysis',
+        'Process Improvement',
+        'Microsoft 365',
+        'Power Platform',
       ],
-      technologies: ['React', 'TypeScript', 'Node.js', 'Android SDK', 'Hardware Support', 'Networking', 'POS Systems'],
+      coreAreas: [
+        'IT Operations',
+        'IT Service Management',
+        'Team Leadership',
+        'Roving IT Support',
+        'Network Infrastructure',
+        'Server Support',
+        'POS Systems',
+        'Store Opening Deployment',
+        'Incident Management',
+        'SLA Monitoring',
+        'Root Cause Analysis',
+        'Data Analysis',
+        'Process Improvement',
+        'Microsoft 365',
+        'Power Platform',
+      ],
     },
     {
-      id: 'exp-it-support',
-      position: 'IT Systems & Technical Support Specialist',
-      company: 'Enterprise Infrastructure & Client Services',
-      location: 'Philippines',
-      period: '2021 — 2023',
-      type: 'Full-time',
+      id: 'exp-prince-lead',
+      position: 'Senior Client Support Analyst – Team Lead',
+      company: 'Prince Retail Group of Companies',
+      location: 'Mandaue City, Cebu',
+      period: 'March 2021 – February 2022',
+      type: 'Remote',
+      overview:
+        'Provided senior-level technical support while serving as a team lead for Client Support operations. Coordinated technical issues, field activities, and service requests while assisting in the improvement of IT support processes.',
       responsibilities: [
-        'Delivered comprehensive on-site and remote hardware, software, and peripheral support across multi-device environments.',
-        'Diagnosed network connectivity issues, switch patching, subnet configurations, and printer spooler errors.',
-        'Managed POS terminal rollouts, receipt printer calibrations, and retail inventory database reconciliations.',
+        'Coordinated daily Client Support activities and technical escalations.',
+        'Provided advanced troubleshooting for hardware, software, network, POS, and system-related incidents.',
+        'Assisted in monitoring service performance, ticket resolution, and SLA compliance.',
+        'Supported branch and Distribution Center IT operations through remote and onsite coordination.',
+        'Assisted in IT documentation, reporting, troubleshooting procedures, and operational standardization.',
+        'Served as a technical escalation point for complex incidents requiring deeper investigation.',
+        'Supported continuous improvement initiatives within Client Support operations.',
       ],
-      achievements: [
-        'Maintained 99.5% service level agreement (SLA) compliance on critical technical incident resolution.',
-        'Authored standard operating procedures (SOPs) for rapid workstation setup and POS troubleshooting.',
+      technologies: [
+        'Technical Escalations',
+        'Incident Management',
+        'SLA Compliance',
+        'POS Systems',
+        'Network Infrastructure',
+        'Standard Operating Procedures',
+        'Team Leadership',
       ],
-      technologies: ['Windows Systems', 'Network Routing', 'POS Hardware', 'Printer Protocols', 'Active Directory', 'Diagnostics'],
+      coreAreas: [
+        'Technical Escalations',
+        'SLA Compliance',
+        'POS & Hardware',
+        'Team Leadership',
+        'Continuous Improvement',
+      ],
     },
     {
-      id: 'exp-software-eng',
-      position: 'Software & Web Application Developer',
-      company: 'Technology Solutions & Digital Systems',
-      location: 'Philippines',
-      period: '2019 — 2021',
-      type: 'Contract / Project',
+      id: 'exp-prince-analyst',
+      position: 'Client Support Analyst',
+      company: 'Prince Retail Group of Companies',
+      location: 'Mandaue City, Cebu',
+      period: 'February 2020 – March 2021',
+      type: 'Remote',
+      overview:
+        'Provided centralized IT support and operational assistance for geographically distributed retail branches and Distribution Centers.',
       responsibilities: [
-        'Built dynamic frontend web interfaces, client portals, and modular components utilizing modern JavaScript frameworks.',
-        'Integrated third-party REST APIs, payment gateways, and backend relational databases.',
-        'Tested responsive layouts across diverse screen viewports and mobile devices.',
+        'Managed and resolved IT incidents and service requests through service-management processes.',
+        'Provided remote technical support for branch users, workstations, POS systems, network connectivity, and business applications.',
+        'Monitored recurring incidents and identified opportunities for preventive action.',
+        'Assisted in maintaining IT asset records and operational documentation.',
+        'Supported reporting and data analysis for IT service performance.',
+        'Developed and maintained digital tools and reports to improve operational visibility.',
+        'Collaborated with field technicians and other support teams to resolve branch-level technical issues.',
       ],
-      achievements: [
-        'Delivered 6 commercial web and database projects within schedule and quality requirements.',
-        'Improved page loading performance and Lighthouse accessibility scores across legacy platforms.',
+      technologies: [
+        'Centralized IT Support',
+        'ITSM Processes',
+        'Remote Troubleshooting',
+        'Workstation & POS Support',
+        'Asset Tracking',
+        'Data Reporting & Dashboards',
+        'Field Collaboration',
       ],
-      technologies: ['JavaScript', 'HTML5', 'CSS3', 'REST APIs', 'MySQL', 'Git', 'UI/UX Design'],
+      coreAreas: [
+        'Incident & Service Requests',
+        'Remote Diagnostics',
+        'Asset Tracking',
+        'Reporting & Analytics',
+      ],
     },
+    {
+      id: 'exp-prince-sr-tech',
+      position: 'Senior Client Support Technician',
+      company: 'Prince Retail Group of Companies',
+      location: 'Mandaue City, Cebu',
+      period: 'May 2019 – March 2020',
+      type: 'Remote',
+      overview:
+        'Provided advanced technical support for retail branches and Distribution Centers, handling hardware, software, network, and systems-related issues.',
+      responsibilities: [
+        'Performed advanced troubleshooting and resolution of IT incidents.',
+        'Supported branch networks, workstations, POS equipment, printers, servers, and peripheral devices.',
+        'Conducted onsite and remote technical support activities.',
+        'Assisted with infrastructure installations, equipment deployment, and system configuration.',
+        'Coordinated technical escalations and vendor support when required.',
+        'Maintained technical documentation and supported standard troubleshooting procedures.',
+      ],
+      technologies: [
+        'Advanced Hardware Troubleshooting',
+        'Branch Network Infrastructure',
+        'Server & POS Support',
+        'Thermal Printers & Peripherals',
+        'Infrastructure Deployment',
+        'Vendor Coordination',
+      ],
+      coreAreas: [
+        'Hardware & Servers',
+        'Network Systems',
+        'POS & Peripherals',
+        'Vendor Escalations',
+      ],
+    },
+    {
+      id: 'exp-prince-tech',
+      position: 'Client Support Technician',
+      company: 'Prince Retail Group of Companies',
+      location: 'Mandaue City, Cebu',
+      period: 'February 2018 – July 2019',
+      type: 'Remote',
+      overview:
+        'Provided technical support to assigned retail branches and Distribution Centers, ensuring reliable day-to-day operation of IT equipment and business systems.',
+      responsibilities: [
+        'Troubleshot hardware, software, network, POS, printer, and peripheral issues.',
+        'Performed workstation setup, configuration, maintenance, and deployment.',
+        'Assisted with network and system installations at branch locations.',
+        'Provided onsite technical support during branch operations and store activities.',
+        'Maintained IT equipment and assisted in asset monitoring.',
+        'Coordinated with senior support personnel for escalated technical issues.',
+      ],
+      technologies: [
+        'Hardware Diagnostics',
+        'Workstation Setup & Deployment',
+        'Network Cabling & Patching',
+        'POS Terminal Support',
+        'Printer Maintenance',
+        'Asset Monitoring',
+      ],
+      coreAreas: [
+        'Workstation Setup',
+        'Network Installation',
+        'POS Support',
+        'Hardware Diagnostics',
+      ],
+    },
+    {
+      id: 'exp-devlarn',
+      position: 'IT Staff',
+      company: 'Devlarn Ventures and Development Corporation',
+      location: 'Mandaue City, Cebu',
+      period: 'January 2018 – February 2018',
+      type: 'On-site',
+      overview:
+        'Provided day-to-day technical support and IT assistance within the organization.',
+      responsibilities: [
+        'Provided hardware and software troubleshooting.',
+        'Assisted with computer setup, configuration, and maintenance.',
+        'Supported users with basic technical issues and IT requirements.',
+        'Assisted in maintaining reliable operation of workplace IT equipment.',
+      ],
+      technologies: [
+        'Desktop Support',
+        'Computer Assembly & Configuration',
+        'Software Troubleshooting',
+        'Workplace IT Maintenance',
+      ],
+      coreAreas: ['Desktop Support', 'Hardware Setup', 'User Support'],
+    },
+    {
+      id: 'exp-palmgrass',
+      position: 'IT Staff / Graphics Designer / CCTV Operator',
+      company: 'Cebu Palm Grass Hotel Incorporated',
+      location: 'Cebu, Philippines',
+      period: 'July 2016 – January 2018',
+      type: 'On-site',
+      overview:
+        'Handled a combination of IT operations, technical support, digital graphics, and security-system monitoring within a hotel environment.',
+      responsibilities: [
+        'Provided technical support for computers, networks, printers, and other IT equipment.',
+        'Assisted with network infrastructure, connectivity, and system troubleshooting.',
+        'Managed and monitored CCTV/DVR security systems.',
+        'Assisted in maintaining and troubleshooting surveillance equipment.',
+        'Designed graphics and digital materials for hotel operations and promotions.',
+        'Supported the hotel\'s website and WordPress-based content management.',
+        'Assisted with general IT maintenance, configuration, and user support.',
+        'Provided technical assistance to different hotel departments to maintain uninterrupted operations.',
+      ],
+      technologies: [
+        'IT Technical Support',
+        'Network Infrastructure',
+        'CCTV / DVR Surveillance',
+        'Graphic Design',
+        'WordPress CMS',
+        'Hospitality Systems',
+      ],
+      coreAreas: [
+        'IT Operations',
+        'CCTV Security Systems',
+        'Digital Graphic Design',
+        'WordPress & Web Content',
+      ],
+    },
+  ],
+  careerProgression: [
+    {
+      role: 'Client Support Supervisor',
+      company: 'Prince Retail Group of Companies',
+      period: '2022 – Present',
+    },
+    {
+      role: 'Senior Client Support Analyst – Team Lead',
+      company: 'Prince Retail Group of Companies',
+      period: '2021 – 2022',
+    },
+    {
+      role: 'Client Support Analyst',
+      company: 'Prince Retail Group of Companies',
+      period: '2020 – 2021',
+    },
+    {
+      role: 'Senior Client Support Technician',
+      company: 'Prince Retail Group of Companies',
+      period: '2019 – 2020',
+    },
+    {
+      role: 'Client Support Technician',
+      company: 'Prince Retail Group of Companies',
+      period: '2018 – 2019',
+    },
+    {
+      role: 'IT Staff / Graphics Designer / CCTV Operator',
+      company: 'Cebu Palm Grass Hotel Incorporated',
+      period: '2016 – 2018',
+    },
+  ],
+  professionalFocus: [
+    'IT Operations',
+    'IT Service Management',
+    'Technical Support Leadership',
+    'Retail IT Infrastructure',
+    'Network & Server Support',
+    'POS Systems',
+    'Store Deployment',
+    'Incident & Problem Management',
+    'SLA & KPI Monitoring',
+    'Data Analysis',
+    'Process Automation',
+    'Power Platform',
+    'Asset Management',
+    'Root Cause Analysis',
+    'Continuous Improvement',
   ],
   testimonials: [
     {
