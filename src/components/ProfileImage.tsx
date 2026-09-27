@@ -46,12 +46,22 @@ export const ProfileImage: React.FC = () => {
         </div>
       </div>
 
-      {/* Identity Tag (Clean, Non-Editable) */}
-      <div className="mt-3 flex items-center">
-        <span className="inline-flex items-center gap-2 text-xs text-[#E1DCC9]/90 px-3.5 py-1 rounded-full border border-[#412D15] bg-[#1F150C]/80 shadow-md backdrop-blur-sm">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-          <span className="font-mono text-xs">{data.profile.name}</span>
-        </span>
+      {/* Profile Details & Professional Disclaimer */}
+      <div className="mt-5 flex flex-col items-center text-center max-w-sm sm:max-w-md px-3 space-y-3">
+        {/* Role & Company Tag */}
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#412D15] bg-[#1F150C]/90 shadow-md backdrop-blur-sm">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 shrink-0 shadow-[0_0_8px_#34d399]" />
+          <span className="font-mono text-xs text-[#E1DCC9] font-medium tracking-wide">
+            {data.profile.roleTag || "IT Client Support Supervisor - Team Lead at Prince Retail Group of Companies"}
+          </span>
+        </div>
+
+        {/* Professional Philosophy Disclaimer */}
+        <div className="relative pt-1 px-3">
+          <p className="text-xs sm:text-sm text-[#E1DCC9]/80 font-sans italic leading-relaxed text-balance">
+            {data.profile.disclaimer || "“I’m not a programmer. I’m a human with a bold imagination—and AI is the tool that brings my ideas to life.”"}
+          </p>
+        </div>
       </div>
     </div>
   );

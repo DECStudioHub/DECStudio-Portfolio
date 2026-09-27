@@ -69,6 +69,8 @@ export interface PortfolioConfig {
     name: string;
     headline: string;
     subHeadline: string;
+    roleTag?: string;
+    disclaimer?: string;
     introRoles: string[];
     supportingText: string;
     location: string;
@@ -83,6 +85,7 @@ export interface PortfolioConfig {
   };
   socials: SocialLink[];
   about: {
+    tagline?: string;
     bio: string[];
     pillars: {
       title: string;
@@ -101,20 +104,21 @@ export const initialPortfolioData: PortfolioConfig = {
   brand: {
     name: 'DECStudio',
     tagline: 'Technical • Creative • Reliable • Modern • Minimalist • Professional',
-    footerSubtitle: 'Web Developer • Software Engineer • IT Tech Support • Content Creator',
+    footerSubtitle: 'Web Developer • Android Developer • IT Tech Support • Content Creator',
     copyrightYear: 2026,
   },
   profile: {
     name: 'Dante Custodio Jr.',
     headline: "Hi, I'm Dante Custodio Jr.",
-    subHeadline: 'Web Developer • Android Developer • Software Engineer',
+    subHeadline: 'Web Developer • Android Developer • IT Tech Support',
+    roleTag: 'IT Client Support Supervisor - Team Lead at Prince Retail Group of Companies',
+    disclaimer: '“I’m not a programmer. I’m a human with a bold imagination—and AI is the tool that brings my ideas to life.”',
     introRoles: [
       'Web Developer',
       'Android Developer',
-      'Software Engineer',
       'IT Tech Support',
       'System Developer',
-      'Content Creator',
+      'Technology Creator',
     ],
     supportingText:
       'Building practical digital solutions, reliable systems, and creative technology experiences.',
@@ -166,9 +170,10 @@ export const initialPortfolioData: PortfolioConfig = {
     },
   ],
   about: {
+    tagline: 'IT Professional • Technology Innovator • Problem Solver',
     bio: [
-      'DECStudio operates at the intersection of rigorous software engineering, reliable IT infrastructure operations, and creative digital media. With extensive practical experience spanning modern web applications, native Android solutions, automated workflows, and hands-on IT systems support, my focus is delivering practical technology that just works.',
-      'From troubleshooting mission-critical networks, POS hardware, and business systems to engineering scalable web dashboards, APIs, and digital multimedia pipelines, every solution is built with reliability, clean architecture, and user-centered simplicity.',
+      'I’m an IT Professional with extensive experience in IT operations, technical support, infrastructure, and team leadership across 27 retail branches, including 3 distribution centers and 24 stores in Negros and Panay.',
+      'I specialize in solving technical challenges, improving business processes, and creating innovative solutions using modern technologies and AI tools—turning ideas into practical systems that help businesses work smarter, faster, and more efficiently.',
     ],
     pillars: [
       {

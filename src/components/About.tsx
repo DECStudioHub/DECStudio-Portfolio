@@ -43,26 +43,29 @@ export const About: React.FC = () => {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-[#412D15]/40 pb-6">
-          <div className="space-y-1">
+          <div className="space-y-1.5">
             <span className="text-xs font-mono uppercase tracking-widest text-[#E1DCC9]/60">
               01. Background & Philosophy
             </span>
             <h2 className="font-heading text-3xl sm:text-4xl font-bold text-[#E1DCC9]">
               About DECStudio
             </h2>
+            <p className="text-sm sm:text-base font-mono text-[#E1DCC9]/90 font-medium tracking-wide">
+              {data.about.tagline || 'IT Professional • Technology Innovator • Problem Solver'}
+            </p>
           </div>
           <div className="flex items-center gap-3 text-xs font-mono text-[#E1DCC9]/60">
-            <span>Philippines Base</span>
+            <span>27 Retail Branches</span>
             <span aria-hidden="true">·</span>
-            <span>Multi-Disciplinary</span>
+            <span>3 Distribution Centers</span>
             <span aria-hidden="true">·</span>
-            <span>Hybrid Engineering</span>
+            <span>24 Stores</span>
           </div>
         </div>
 
         {/* Narrative Split */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <div className="lg:col-span-6 space-y-4 text-base sm:text-lg text-[#E1DCC9]/80 leading-relaxed">
+          <div className="lg:col-span-6 space-y-5 text-base sm:text-lg text-[#E1DCC9]/85 leading-relaxed">
             {data.about.bio.map((paragraph, idx) => (
               <p key={idx} className="text-balance">
                 {paragraph}
@@ -72,31 +75,31 @@ export const About: React.FC = () => {
 
           <div className="lg:col-span-6 rounded-xl border border-[#412D15] bg-[#1F150C]/60 p-6 backdrop-blur-sm space-y-4">
             <h3 className="font-heading text-sm font-semibold tracking-wider text-[#E1DCC9] uppercase">
-              Core Technical Competencies
+              Operational Scope & Technical Focus
             </h3>
-            <div className="space-y-3 text-sm text-[#E1DCC9]/75">
+            <div className="space-y-3.5 text-sm text-[#E1DCC9]/80">
               <div className="flex items-start gap-2.5">
-                <span className="font-mono text-xs text-[#E1DCC9]/40 mt-0.5">01</span>
+                <span className="font-mono text-xs text-[#E1DCC9]/50 mt-0.5">01</span>
                 <div>
-                  <strong className="text-[#E1DCC9] font-medium">Full-Spectrum Engineering:</strong> Modern reactive web frontends, Node.js micro-services, and native Android applications.
+                  <strong className="text-[#E1DCC9] font-medium">Enterprise Retail Infrastructure:</strong> IT operations, systems continuity, and network administration across 27 branches (3 DCs & 24 stores) in Negros and Panay.
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="font-mono text-xs text-[#E1DCC9]/40 mt-0.5">02</span>
+                <span className="font-mono text-xs text-[#E1DCC9]/50 mt-0.5">02</span>
                 <div>
-                  <strong className="text-[#E1DCC9] font-medium">Enterprise IT Support:</strong> Practical troubleshooting of network switches, routers, desktop fleets, thermal POS terminals, and printers.
+                  <strong className="text-[#E1DCC9] font-medium">Team Leadership & Support:</strong> Leading technical support personnel, managing escalations, POS terminal operations, hardware troubleshooting, and store rollouts.
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="font-mono text-xs text-[#E1DCC9]/40 mt-0.5">03</span>
+                <span className="font-mono text-xs text-[#E1DCC9]/50 mt-0.5">03</span>
                 <div>
-                  <strong className="text-[#E1DCC9] font-medium">Automation & Systems:</strong> Eliminating manual friction through batch scripts, background service daemons, and data reconciliation.
+                  <strong className="text-[#E1DCC9] font-medium">AI & Modern Tooling:</strong> Leveraging modern AI frameworks and automation tools to rapidly conceptualize, prototype, and build practical solutions.
                 </div>
               </div>
               <div className="flex items-start gap-2.5">
-                <span className="font-mono text-xs text-[#E1DCC9]/40 mt-0.5">04</span>
+                <span className="font-mono text-xs text-[#E1DCC9]/50 mt-0.5">04</span>
                 <div>
-                  <strong className="text-[#E1DCC9] font-medium">Content Creation:</strong> High-clarity educational media, tutorial breakdowns, and digital storytelling across YouTube and social platforms.
+                  <strong className="text-[#E1DCC9] font-medium">System Innovation:</strong> Transforming real-world business challenges into smart digital applications, automated workflows, and efficient operational tools.
                 </div>
               </div>
             </div>

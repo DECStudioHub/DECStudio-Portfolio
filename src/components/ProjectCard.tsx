@@ -150,20 +150,28 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
     >
       <div>
         {/* Preview Frame */}
-        <div className="relative h-44 w-full border-b border-[#412D15] bg-black overflow-hidden cursor-pointer" onClick={() => onViewDetails(project)}>
-          <div className="w-full h-full transition-transform duration-500 group-hover:scale-105">
+        <div
+          className="relative h-48 w-full border-b border-[#412D15] bg-[#0E0A06] overflow-hidden cursor-pointer flex flex-col"
+          onClick={() => onViewDetails(project)}
+        >
+          {/* Card Top Header: Displays Category and Status cleanly without overlapping preview content */}
+          <div className="flex items-center justify-between px-3.5 py-2 bg-[#170F09] border-b border-[#412D15]/70 z-10 shrink-0">
+            {/* Category indicator */}
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-[#1F150C] border border-[#412D15] text-[10px] font-mono text-[#E1DCC9]/90 font-medium">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E1DCC9]/50" />
+              {project.category}
+            </span>
+
+            {/* Status indicator */}
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-black/75 border border-[#412D15] text-[10px] font-mono text-[#E1DCC9]">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
+              <span>{project.status}</span>
+            </span>
+          </div>
+
+          {/* Technical Graphic Preview (Unobstructed, full visibility) */}
+          <div className="w-full flex-1 overflow-hidden transition-transform duration-500 group-hover:scale-[1.02]">
             {renderPreviewGraphic(project.imageTheme)}
-          </div>
-
-          {/* Status unboxed text indicator */}
-          <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-0.5 rounded bg-black/80 backdrop-blur-md border border-[#412D15] text-[10px] font-mono text-[#E1DCC9]">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-            <span>{project.status}</span>
-          </div>
-
-          {/* Category indicator */}
-          <div className="absolute top-3 left-3 px-2 py-0.5 rounded bg-black/70 border border-[#412D15] text-[10px] font-mono text-[#E1DCC9]/80">
-            {project.category}
           </div>
         </div>
 

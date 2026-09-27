@@ -44,17 +44,17 @@ export const Projects: React.FC = () => {
         </div>
 
         {/* Filter Bar (Segmented Controls) */}
-        <div className="flex items-center overflow-x-auto pb-2 scrollbar-none gap-2">
+        <div className="p-1.5 rounded-xl border border-[#412D15]/80 bg-[#160E08]/95 backdrop-blur-md inline-flex items-center overflow-x-auto max-w-full scrollbar-none gap-1.5 shadow-lg">
           {categories.map((cat) => {
             const isActive = selectedCategory === cat;
             return (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`whitespace-nowrap px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`whitespace-nowrap px-4 py-1.5 rounded-lg text-xs transition-all ${
                   isActive
-                    ? 'bg-[#412D15] text-[#E1DCC9] shadow-sm border border-[#E1DCC9]/30 font-semibold'
-                    : 'bg-[#1F150C]/60 text-[#E1DCC9]/70 hover:text-[#E1DCC9] border border-[#412D15]/50 hover:bg-[#1F150C]'
+                    ? 'bg-[#412D15] text-[#E1DCC9] shadow-sm border border-[#E1DCC9]/40 font-semibold'
+                    : 'bg-transparent text-[#E1DCC9]/70 hover:text-[#E1DCC9] hover:bg-[#25180D] border border-transparent font-normal'
                 }`}
               >
                 {cat}
