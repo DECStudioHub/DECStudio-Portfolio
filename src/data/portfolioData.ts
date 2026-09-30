@@ -301,6 +301,68 @@ export const initialPortfolioData: PortfolioConfig = {
         'Excel Import → Data Validation → Data Processing → Module 1: PCOUNT W2W (Count Tag • Count Sheet • Locator Grouping • Barcode • 9-Tag Packing) | Module 2: ShelfTag / PP Tag (White Tag • Yellow Tag • Layout Editor • Print Preview) → Unified Rendering → Browser Print / PDF Export',
       imageTheme: 'dec-system',
     },
+    {
+      id: 'proj-wifi-hitmap',
+      title: 'WiFi Signal Mapping & Network Infrastructure System',
+      category: 'IT Tools',
+      tags: ['IT Tools', 'Web Development', 'Software'],
+      shortDescription:
+        'A web-based application for visualizing WiFi coverage, mapping network equipment, and organizing WiFi survey data using interactive floor plans.',
+      fullDescription:
+        'A web-based application for visualizing WiFi coverage, mapping network equipment, and organizing WiFi survey data using interactive floor plans. Designed to help field IT engineers, network administrators, and technical teams survey wireless dead zones, map AP placements, trace MDF/IDF cabling, and generate comprehensive survey reports.',
+      features: [
+        'Interactive floor-plan mapping',
+        'WiFi readings and heatmap visualization',
+        'AP, MDF, IDF, and LAN cable mapping',
+        'Project management and report generation',
+      ],
+      techStack: [
+        'React',
+        'JavaScript',
+        'HTML5',
+        'CSS',
+        'Google AI Studio',
+        'GitHub Pages',
+      ],
+      status: 'Production',
+      githubUrl: 'https://decstudiohub.github.io/DEC-IT-PRO-Network-Tools/',
+      liveUrl: 'https://decstudiohub.github.io/DEC-IT-PRO-Network-Tools/',
+      architectureNotes:
+        'Modular, component-based web application with interactive mapping, data management, and reporting modules.',
+      imageTheme: 'wifi-hitmap',
+    },
+    {
+      id: 'proj-decstudiohub-suite',
+      title: 'DECStudioHub — Offline Digital Utility Suite',
+      category: 'Web Development',
+      tags: ['Web Development', 'Software', 'IT Tools'],
+      shortDescription:
+        'A high-performance, privacy-first web utility suite consolidating a 15-tool canvas image studio, IT network calculators, and solar engineering engines entirely client-side.',
+      fullDescription:
+        'A privacy-focused, client-side digital utility and image processing web application built with React, TypeScript, and Tailwind CSS. It features a complete 15-tool canvas-based image studio—including resolution enhancement, bilateral denoising, and before/after split sliders—alongside specialized calculation engines for IT networking, solar system sizing, and electrical planning, running 100% in-browser with zero data egress.',
+      features: [
+        '15-Tool Canvas Image Studio (2×/4× upscale, bilateral denoising & split sliders)',
+        'IT & Networking Suite (CIDR subnetting, IP analysis & Wi-Fi attenuation)',
+        'Solar & Electrical Designer (PV array sizing, battery capacity & voltage drop)',
+        'Motorcycle Telemetry & Financial Engines (Fuel economy, loan & tariff calculators)',
+        'Privacy-First Architecture (100% client-side execution, zero data egress)',
+      ],
+      techStack: [
+        'React',
+        'TypeScript',
+        'Vite',
+        'Tailwind CSS',
+        'HTML5 Canvas API',
+        'Lucide Icons',
+        'Offline-First',
+      ],
+      status: 'Production',
+      githubUrl: 'https://decstudiohub.github.io/DECStudioHub-DigitalTool/',
+      liveUrl: 'https://decstudiohub.github.io/DECStudioHub-DigitalTool/',
+      architectureNotes:
+        '100% Client-Side Offline Architecture: React + Canvas API + Typed Arrays executing local image processing and calculation engines without server uploads or third-party telemetry.',
+      imageTheme: 'decstudiohub-suite',
+    },
   ],
   experience: [
     {

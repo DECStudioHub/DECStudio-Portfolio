@@ -17,6 +17,7 @@ import { Skills } from './components/Skills';
 import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { TestimonialCarousel } from './components/TestimonialCarousel';
 import { Contact } from './components/Contact';
+import { ToolsMarquee } from './components/ToolsMarquee';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -60,6 +61,9 @@ export default function App() {
 
           {/* 7. Contact & Application Form */}
           <Contact />
+
+          {/* 8. Tools & Platforms Infinite Marquee */}
+          <ToolsMarquee />
         </main>
 
         {/* Footer */}

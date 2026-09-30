@@ -81,6 +81,163 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, onViewDetails
             </div>
           </div>
         );
+      case 'wifi-hitmap':
+        return (
+          <div className="w-full h-full bg-[#100B06] relative overflow-hidden flex flex-col justify-between p-3.5 font-mono text-[10px] text-[#E1DCC9]/80 select-none">
+            {/* Top Bar */}
+            <div className="flex items-center justify-between border-b border-[#412D15]/60 pb-1.5">
+              <span className="flex items-center gap-1.5 text-[#E1DCC9] font-semibold">
+                <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
+                SURVEY_HEATMAP_GRID.cad
+              </span>
+              <span className="text-[9px] text-cyan-300/80 bg-cyan-950/40 px-1.5 py-0.5 rounded border border-cyan-800/40">
+                FLOORPLAN ACTIVE
+              </span>
+            </div>
+
+            {/* Middle visual: Simulated Interactive Floorplan Heatmap */}
+            <div className="grid grid-cols-12 gap-2 py-1 items-center">
+              {/* Heatmap Canvas Preview with Radar & Signal Rings */}
+              <div className="col-span-7 bg-[#170F09] relative rounded border border-[#412D15] p-2 h-20 overflow-hidden flex flex-col justify-between">
+                {/* Floorplan Grid Lines */}
+                <div className="absolute inset-0 bg-[linear-gradient(to_right,#412D1520_1px,transparent_1px),linear-gradient(to_bottom,#412D1520_1px,transparent_1px)] bg-[size:10px_10px]" />
+                
+                {/* AP 1 Signal Heatmap Rings */}
+                <div className="absolute top-2 left-3 w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-full bg-emerald-400/20 border border-emerald-400/40 flex items-center justify-center">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 shadow-[0_0_8px_#34d399]" />
+                  </div>
+                </div>
+
+                {/* AP 2 Signal Rings */}
+                <div className="absolute -bottom-2 right-2 w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-amber-400/20 border border-amber-400/40 flex items-center justify-center">
+                    <span className="w-2 h-2 rounded-full bg-amber-400 shadow-[0_0_8px_#fbbf24]" />
+                  </div>
+                </div>
+
+                {/* Cable Backbone connecting MDF to AP */}
+                <svg className="absolute inset-0 w-full h-full pointer-events-none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M 16 10 L 45 42 L 85 55" fill="none" stroke="#38bdf8" strokeWidth="1" strokeDasharray="2,2" opacity="0.6" />
+                </svg>
+
+                {/* Floor Labels */}
+                <div className="relative z-10 flex justify-between text-[7px] text-[#E1DCC9]/50 font-mono">
+                  <span>ZONE-A (AP-01: -48dBm)</span>
+                  <span>MDF RACK</span>
+                </div>
+                <div className="relative z-10 flex justify-between text-[7px] text-[#E1DCC9]/50 font-mono">
+                  <span>CAT6 UTP TRACE</span>
+                  <span>ZONE-B (-64dBm)</span>
+                </div>
+              </div>
+
+              {/* Network Infrastructure Telemetry */}
+              <div className="col-span-5 space-y-1.5 text-[8.5px]">
+                <div className="bg-[#1A120B] p-1.5 rounded border border-[#412D15]/80 space-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">AP NODES:</span>
+                    <span className="text-emerald-400 font-bold">4 DEPLOYED</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">INFRA:</span>
+                    <span className="text-[#E1DCC9]">MDF • IDF</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">SURVEY:</span>
+                    <span className="text-cyan-400">128 PTS</span>
+                  </div>
+                </div>
+                <div className="bg-black/40 px-1.5 py-1 rounded border border-[#412D15]/50 flex items-center justify-between text-[8px] text-[#E1DCC9]/70">
+                  <span>HEATMAP:</span>
+                  <span className="text-emerald-400 font-bold">2.4 / 5GHz</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Telemetry */}
+            <div className="pt-1.5 border-t border-[#412D15]/50 flex items-center justify-between text-[9px] text-[#E1DCC9]/60">
+              <span>CABLE MAPPING: MDF ➔ IDF ➔ AP</span>
+              <span className="text-cyan-400 font-medium">REPORT: PDF EXPORT</span>
+            </div>
+          </div>
+        );
+      case 'decstudiohub-suite':
+        return (
+          <div className="w-full h-full bg-[#110B07] relative overflow-hidden flex flex-col justify-between p-3.5 font-mono text-[10px] text-[#E1DCC9]/80 select-none">
+            {/* Top Bar */}
+            <div className="flex items-center justify-between border-b border-[#412D15]/60 pb-1.5">
+              <span className="flex items-center gap-1.5 text-[#E1DCC9] font-semibold">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                STUDIO_UTILITY_CORE.ts
+              </span>
+              <span className="text-[9px] text-amber-300/80 bg-amber-950/40 px-1.5 py-0.5 rounded border border-amber-800/40">
+                100% CLIENT-SIDE
+              </span>
+            </div>
+
+            {/* Middle visual: Before/After Split Canvas Preview + Engine Telemetry */}
+            <div className="grid grid-cols-12 gap-2 py-1 items-center">
+              {/* Split-View Canvas Upscaler Graphic */}
+              <div className="col-span-7 bg-[#1A120B] relative rounded border border-[#412D15] p-2 h-20 overflow-hidden flex flex-col justify-between">
+                {/* Left side: Soft/Normal */}
+                <div className="absolute inset-y-0 left-0 w-1/2 bg-[#23170E] flex flex-col items-start justify-center pl-2 border-r border-amber-400/80">
+                  <span className="text-[7.5px] font-bold text-[#E1DCC9]/60 uppercase">1× Original</span>
+                  <div className="w-6 h-6 mt-1 rounded bg-[#352416] flex items-center justify-center text-[8px] text-[#E1DCC9]/40 blur-[0.5px]">
+                    RAW
+                  </div>
+                </div>
+
+                {/* Right side: 4x Enhanced Bilateral Sharpened */}
+                <div className="absolute inset-y-0 right-0 w-1/2 bg-[#2D1E12] flex flex-col items-end justify-center pr-2">
+                  <span className="text-[7.5px] font-bold text-amber-300 uppercase">4× Enhanced</span>
+                  <div className="w-6 h-6 mt-1 rounded bg-[#4A321E] border border-amber-400/60 flex items-center justify-center text-[8px] text-amber-300 font-bold shadow-[0_0_6px_#f59e0b40]">
+                    HD
+                  </div>
+                </div>
+
+                {/* Draggable Split Handle Indicator */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-amber-400 text-black flex items-center justify-center text-[7px] font-bold shadow-md">
+                  ⇄
+                </div>
+
+                {/* Canvas Overlay Tag */}
+                <div className="relative z-10 flex justify-between text-[7px] text-[#E1DCC9]/50 font-mono mt-auto">
+                  <span>CANVAS API</span>
+                  <span>LAPLACIAN 4×</span>
+                </div>
+              </div>
+
+              {/* Suite Modules Telemetry */}
+              <div className="col-span-5 space-y-1 text-[8px]">
+                <div className="bg-[#180F08] p-1.5 rounded border border-[#412D15] space-y-0.5">
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">IMAGE:</span>
+                    <span className="text-amber-300 font-medium">15 Tools</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">NETWORK:</span>
+                    <span className="text-emerald-400 font-medium">CIDR / IP</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-[#E1DCC9]/50">SOLAR:</span>
+                    <span className="text-cyan-400 font-medium">PV / Battery</span>
+                  </div>
+                </div>
+                <div className="bg-black/50 px-1.5 py-0.5 rounded border border-[#412D15]/50 flex items-center justify-between text-[7.5px] text-[#E1DCC9]/70">
+                  <span>DATA EGRESS:</span>
+                  <span className="text-emerald-400 font-bold">0 KB (LOCAL)</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom Telemetry */}
+            <div className="pt-1.5 border-t border-[#412D15]/50 flex items-center justify-between text-[9px] text-[#E1DCC9]/60">
+              <span>STORAGE: LOCAL PERSISTENCE</span>
+              <span className="text-emerald-400 font-medium">ZERO SERVER EGRESS</span>
+            </div>
+          </div>
+        );
       case 'it-support':
         return (
           <div className="w-full h-full bg-[#150E07] relative overflow-hidden flex flex-col justify-between p-4 font-mono text-[10px] text-[#E1DCC9]/70 select-none">
